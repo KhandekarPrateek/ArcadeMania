@@ -28,7 +28,6 @@ const Status = ({
   };
   useEffect(checkWinner);
   useEffect(checkLosser);
-  //   console.log(wordLength1, correctLetter);
 
   const playAgain = () => {
     setCurrentWord(words[Math.floor(Math.random() * words.length)]);

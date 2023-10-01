@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import Figure from "./components/Figure";
 import Word from "./components/Word";
@@ -34,12 +34,7 @@ const Hangman = () => {
   setTimeout(() => {
     setShowNotification(false);
   }, 1000);
-  // const playAgain=()=>{
-  //   setCurrentWord(words[Math.floor(Math.random() * words.length)]);
-  //   setCorrectLetter([]);
-  //   setLose(false);
-  //   setPlay(true);
-  // }
+
   return (
     <div>
       <Figure wrong={wrongLetter} />
@@ -61,7 +56,6 @@ const Hangman = () => {
         wrong={wrongLetter}
         words={words}
         setCorrectLetter={setCorrectLetter}
-        // function={playAgain}
         setWrongLetter={setWrongLetter}
       />
     </div>

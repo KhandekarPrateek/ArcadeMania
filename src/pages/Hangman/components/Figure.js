@@ -2,7 +2,7 @@ import React from "react";
 
 const Figure = (props) => {
   const error = props.wrong.length;
-  console.log("error:", error);
+
   return (
     <div>
       <svg height="250" width="200" className="figure-container">
