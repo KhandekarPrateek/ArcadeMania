@@ -7,10 +7,10 @@ import MainPage from "./pages/MainPage";
 function App() {
   return (
     <div className="App">
+      <MainPage />
       {/* <MemesGame /> */}
       {/* <Tenzies /> */}
       {/* <Hangman /> */}
-      <MainPage />
     </div>
   );
 }
