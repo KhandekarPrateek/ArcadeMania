@@ -1,8 +1,17 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 
-const Status = ({ currentWord, correctLetter, setCurrentWord }) => {
+const Status = ({
+  currentWord,
+  correctLetter,
+  setCurrentWord,
+  wrong,
+  words,
+  setCorrectLetter,
+  setWrongLetter,
+}) => {
   const [play, setPlay] = useState(true);
+  const [lose, setLose] = useState(false);
   const wordLength = currentWord.split("");
   const wordLength1 = Array.from(new Set(wordLength));
   const checkWinner = () => {
@@ -14,9 +23,31 @@ const Status = ({ currentWord, correctLetter, setCurrentWord }) => {
       });
     }
   };
+  const checkLosser = () => {
+    wrong.length === 6 && setLose(true);
+  };
   useEffect(checkWinner);
-  console.log(wordLength1, correctLetter);
-  return <div>{play === false && <h1>YOU WON</h1>}</div>;
+  useEffect(checkLosser);
+  //   console.log(wordLength1, correctLetter);
+
+  const playAgain = () => {
+    setCurrentWord(words[Math.floor(Math.random() * words.length)]);
+    setCorrectLetter([]);
+    setWrongLetter([]);
+    setLose(false);
+    setPlay(true);
+  };
+  console.log(currentWord);
+
+  return (
+    <div>
+      {play === false && <h1>YOU WON</h1>}
+      {(play === false || lose === true) && (
+        <button onClick={playAgain}>Start another game</button>
+      )}
+      {lose === true && <h1>YOU LOSE</h1>}
+    </div>
+  );
 };
 
 export default Status;

@@ -34,16 +34,23 @@ const Hangman = () => {
   setTimeout(() => {
     setShowNotification(false);
   }, 1000);
-
+  // const playAgain=()=>{
+  //   setCurrentWord(words[Math.floor(Math.random() * words.length)]);
+  //   setCorrectLetter([]);
+  //   setLose(false);
+  //   setPlay(true);
+  // }
   return (
     <div>
       <Figure wrong={wrongLetter} />
       <Word selectedWord={currentWord} correctLetter={correctLetter} />
 
-      <KeyboardEventHandler
-        handleKeys={["alphabetic"]}
-        onKeyEvent={(key, e) => handleKeyChange(key, e)}
-      ></KeyboardEventHandler>
+      {wrongLetter.length < 7 && (
+        <KeyboardEventHandler
+          handleKeys={["alphabetic"]}
+          onKeyEvent={(key, e) => handleKeyChange(key, e)}
+        ></KeyboardEventHandler>
+      )}
 
       <WrongLetters wrong={wrongLetter} />
       {showNotification === true && <div>same</div>}
@@ -51,6 +58,11 @@ const Hangman = () => {
         currentWord={currentWord}
         correctLetter={correctLetter}
         setCurrentWord={setCurrentWord}
+        wrong={wrongLetter}
+        words={words}
+        setCorrectLetter={setCorrectLetter}
+        // function={playAgain}
+        setWrongLetter={setWrongLetter}
       />
     </div>
   );
