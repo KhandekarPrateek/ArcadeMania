@@ -36,7 +36,7 @@ const Hangman = () => {
   }, 1000);
 
   return (
-    <div>
+    <div className="hangman-body">
       <Figure wrong={wrongLetter} />
       <Word selectedWord={currentWord} correctLetter={correctLetter} />
 

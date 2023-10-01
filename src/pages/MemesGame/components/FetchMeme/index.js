@@ -34,40 +34,42 @@ const FetchMeme = () => {
 
   console.log(allData);
   return (
-    <main>
-      <div className="form">
-        <input
-          type="text"
-          placeholder="upper field"
-          className="form--input"
-          name="topText"
-          onChange={handleChange}
-          value={memeInfo.topText}
-        />
-        <input
-          type="text"
-          placeholder="lower field"
-          className="form--input"
-          name="bottomText"
-          onChange={handleChange}
-          value={memeInfo.bottomText}
-        />
-        <button className="form--button" onClick={handleClick}>
-          {" "}
-          Insert a new meme
-        </button>
-      </div>
-      <div className="meme">
-        <h2 className="meme--text top">{memeInfo.topText}</h2>
-        <img
-          src={memeInfo.randomImage}
-          alt="memes to be pulled"
-          className="meme--image"
-        />
+    <div className="meme-body">
+      <div className="meme-main">
+        <div className="form-memes">
+          <input
+            type="text"
+            placeholder="upper field"
+            className="form--input"
+            name="topText"
+            onChange={handleChange}
+            value={memeInfo.topText}
+          />
+          <input
+            type="text"
+            placeholder="lower field"
+            className="form--input"
+            name="bottomText"
+            onChange={handleChange}
+            value={memeInfo.bottomText}
+          />
+          <button className="form--button" onClick={handleClick}>
+            {" "}
+            Insert a new meme
+          </button>
+        </div>
+        <div className="meme">
+          <h2 className="meme--text meme-top">{memeInfo.topText}</h2>
+          <img
+            src={memeInfo.randomImage}
+            alt="memes to be pulled"
+            className="meme--image"
+          />
 
-        <h2 className="meme--text bottom">{memeInfo.bottomText}</h2>
+          <h2 className="meme--text meme-bottom">{memeInfo.bottomText}</h2>
+        </div>
       </div>
-    </main>
+    </div>
   );
 };
 export default FetchMeme;

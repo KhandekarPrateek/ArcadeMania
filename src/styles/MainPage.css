@@ -1,0 +1,15 @@
+.image {
+  width: 50%;
+  float: left;
+  padding: 20px;
+}
+.game-container {
+  height: 100vh;
+  width: 100vw;
+}
+.title-mainpage {
+  font-size: 15vw;
+  width: 50%;
+  float: right;
+  padding: 20px;
+}

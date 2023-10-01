@@ -76,19 +76,21 @@ const FetchMonster = () => {
     }
   }
   return (
-    <main>
-      {/* {tenzies === true && <Confetti className="confetti" />} */}
-      <h1 className="title">TENZIES GAME</h1>
-      <p className="instructions">
-        Roll until all dice are the same. Click each die to freeze it at its
-        current value between rolls.
-      </p>
-      <div className="dice-container">{diceElements}</div>
+    <div className="body-monster">
+      <div className="main-monster">
+        {/* {tenzies === true && <Confetti className="confetti" />} */}
+        <h1 className="title">TENZIES GAME</h1>
+        <p className="instructions">
+          Roll until all dice are the same. Click each die to freeze it at its
+          current value between rolls.
+        </p>
+        <div className="dice-container">{diceElements}</div>
 
-      <button className="roll-dice" onClick={handleClick}>
-        {tenzies === true ? "New game" : "Roll"}
-      </button>
-    </main>
+        <button className="roll-dice" onClick={handleClick}>
+          {tenzies === true ? "New game" : "Roll"}
+        </button>
+      </div>
+    </div>
   );
 };
 
