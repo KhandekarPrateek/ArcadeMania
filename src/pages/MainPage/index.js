@@ -13,7 +13,6 @@ const index = () => {
           <Title />
         </div>
       </div>
-      <TenziesCover />
     </>
   );
 };
