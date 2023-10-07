@@ -2,7 +2,7 @@
 @import "../src/styles/Monster.css";
 @import "../src/styles/Hangman.css";
 @import "../src/styles/MainPage.css";
-body {
+* {
   overflow-x: hidden;
 }
 a {

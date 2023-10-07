@@ -1,19 +1,20 @@
 import React from "react";
 import Image from "../MainPage/components/Image";
 import Title from "./components/Title";
-import TenziesCover from "./components/TenziesCover";
+import { Container, Row, Col } from "reactstrap";
+import Game from "../../assets/background-mainpage-left.png";
 const index = () => {
   return (
-    <>
-      <div className="game-container">
-        <div className="image h-100 d-flex  w-50">
-          <Image />
-        </div>
-        <div className="title-mainpage">
-          <Title />
-        </div>
-      </div>
-    </>
+    <Container className="main-page-container">
+      <Row className="h-100 ">
+        <Col className="align-items-center d-flex justify-content-center">
+          <Image image={Game} />
+        </Col>
+        <Col className="align-items-center d-flex justify-content-center">
+          <Title text="Arcade Mania" />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

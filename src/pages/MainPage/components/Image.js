@@ -1,6 +1,8 @@
 import React from "react";
-import Game from "../../../assets/Game.png";
-const Image = () => {
-  return <img className="img-fluid pt-5 mt-5" src={Game} alt="gameImage" />;
+
+const Image = (props) => {
+  return (
+    <img className="img-fluid pt-5 mt-5" src={props.image} alt="gameImage" />
+  );
 };
 export default Image;

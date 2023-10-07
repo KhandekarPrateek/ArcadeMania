@@ -3,10 +3,12 @@
   float: left;
   padding: 20px;
 }
-.game-container {
+.main-page-container {
   height: 100vh;
   width: 100vw;
+  max-width: 100vw !important;
   background-color: black;
+  background-image: url("../assets/background-mainpage.jpg");
 }
 .title-mainpage {
   font-size: 15vw;
@@ -14,7 +16,7 @@
   float: right;
   padding: 20px;
 }
-.TenziesContanier {
+/* .TenziesContanier {
   height: 100vh;
   width: 100vw;
 }
@@ -25,7 +27,8 @@
 }
 .TenziesImage {
   float: right;
-}
-/* .tenzies-title {
-  font-size: 90px;
 } */
+.main-page-title {
+  color: white;
+  font-family: "Pixelify Sans", cursive;
+}

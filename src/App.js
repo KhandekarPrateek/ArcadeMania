@@ -8,7 +8,7 @@ import Navbar from "./common/Navbar";
 import { Route, Router, Routes } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
+    <>
       <Routes>
         <Route path="/" element={<Navbar />}>
           <Route index element={<MainPage />} />
@@ -17,7 +17,7 @@ function App() {
           <Route path="/MemesGame" element={<MemesGame />} />
         </Route>
       </Routes>
-    </div>
+    </>
   );
 }
 
