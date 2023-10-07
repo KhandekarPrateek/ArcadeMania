@@ -1,6 +1,9 @@
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 const Title = (props) => {
+  const redirectButton = () => {
+    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+  };
   return (
     <Container>
       <Row>
@@ -13,6 +16,18 @@ const Title = (props) => {
           <h1 className="display 5 main-page-title">
             A interactive gaming site made using Reactjs
           </h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col className=" d-flex justify-content-center p-3">
+          <Button
+            className="rounded border border-3"
+            outline
+            color="primary"
+            onClick={redirectButton}
+          >
+            <h1 className="display 5 main-page-title">play video</h1>
+          </Button>
         </Col>
       </Row>
     </Container>
