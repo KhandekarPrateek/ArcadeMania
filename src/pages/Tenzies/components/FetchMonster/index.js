@@ -78,8 +78,7 @@ const FetchMonster = () => {
   return (
     <div className="body-monster">
       <div className="main-monster">
-        {/* {tenzies === true && <Confetti className="confetti" />} */}
-        <h1 className="title">TENZIES GAME</h1>
+        <h1 className="title-tenzies">TENZIES GAME</h1>
         <p className="instructions">
           Roll until all dice are the same. Click each die to freeze it at its
           current value between rolls.
