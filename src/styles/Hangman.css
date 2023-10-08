@@ -1,13 +1,18 @@
 .hangman-body {
+  width: 100vw;
   background-color: #34495e;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
   margin: 0;
   overflow: hidden;
+  justify-content: center;
+  background-image: url("../assets/background-Hangman.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .game-container {
