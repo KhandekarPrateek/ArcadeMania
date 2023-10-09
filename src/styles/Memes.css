@@ -1,6 +1,12 @@
+.meme-page-container {
+  height: 88vh;
+  width: 100vw;
+  max-width: 100vw !important;
+}
 .header-memes {
   display: flex;
   align-items: center;
+
   height: 65px;
   background: linear-gradient(90deg, #672280 1.18%, #a626d3 100%);
   color: white;
@@ -20,11 +26,11 @@
   font-size: 40px;
   font-weight: 500;
 }
-.form-memes {
+/* .form-memes {
   display: grid;
   grid-template: 40px 40px / 1fr 1fr;
   gap: 17px;
-}
+} */
 .form--button {
   grid-column: 1/-1;
 }
@@ -46,7 +52,7 @@
 .meme--image {
   width: 100%;
   border-radius: 3px;
-  height: 79vh;
+  height: 100%;
 }
 .meme--text {
   position: absolute;

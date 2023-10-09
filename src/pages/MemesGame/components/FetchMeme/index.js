@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useState, useEffect } from "react";
+import { Container, Row, Col } from "reactstrap";
 
 const FetchMeme = () => {
   const [memeInfo, setMemeInfo] = useState({
@@ -34,7 +35,58 @@ const FetchMeme = () => {
 
   console.log(allData);
   return (
-    <div className="meme-body">
+    <Container className="meme-page-container">
+      <Row className=" w-100 h-100">
+        <Col>
+          <div className="form-memes ">
+            <Row>
+              {" "}
+              <input
+                type="text"
+                placeholder="upper field"
+                className="form--input"
+                name="topText"
+                onChange={handleChange}
+                value={memeInfo.topText}
+              />
+            </Row>
+            <Row>
+              <input
+                type="text"
+                placeholder="lower field"
+                className="form--input"
+                name="bottomText"
+                onChange={handleChange}
+                value={memeInfo.bottomText}
+              />
+            </Row>
+            <Row>
+              <button className="form--button" onClick={handleClick}>
+                {" "}
+                Insert a new meme
+              </button>
+            </Row>
+          </div>
+        </Col>
+        <Col className="justify-content-center align-item-center d-flex">
+          <div className="meme">
+            <h2 className="meme--text meme-top">{memeInfo.topText}</h2>
+            <img
+              src={memeInfo.randomImage}
+              alt="memes to be pulled"
+              className="meme--image"
+            />
+
+            <h2 className="meme--text meme-bottom">{memeInfo.bottomText}</h2>
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+export default FetchMeme;
+{
+  /* <div className="meme-body">
       <div className="meme-main">
         <div className="form-memes">
           <input
@@ -69,7 +121,5 @@ const FetchMeme = () => {
           <h2 className="meme--text meme-bottom">{memeInfo.bottomText}</h2>
         </div>
       </div>
-    </div>
-  );
-};
-export default FetchMeme;
+    </div> */
+}
