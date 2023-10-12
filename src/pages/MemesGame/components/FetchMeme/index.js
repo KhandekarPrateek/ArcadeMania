@@ -1,9 +1,13 @@
 import React from "react";
 
-import { useState, useEffect } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { useState, useEffect, useRef } from "react";
+import { Container, Row, Col, Button } from "reactstrap";
+
+import html2canvas from "html2canvas";
+import Base64Downloader from "react-base64-downloader";
 
 const FetchMeme = () => {
+  const [imageSS, setImageSS] = useState("");
   const [memeInfo, setMemeInfo] = useState({
     topText: "",
     bottomText: "",
@@ -11,6 +15,7 @@ const FetchMeme = () => {
   });
 
   const [allData, setAllData] = useState({});
+  const imageRef = useRef(null);
 
   function handleClick() {
     const randomNumber = Math.floor(Math.random() * allData.length);
@@ -32,8 +37,20 @@ const FetchMeme = () => {
       .then((res) => res.json())
       .then((data) => setAllData(data.data.memes));
   }, []);
+  const printDocument = async () => {
+    const canvas = await html2canvas(imageRef.current, {
+      useCORS: true,
+    });
+    const image = canvas.toDataURL("meme.png");
+    const imagestring = image.toString();
+    console.log(imagestring, "imagestring");
+    // console.log("canvas", canvas);
+    setImageSS(imagestring);
+  };
+  useEffect(() => {
+    printDocument();
+  }, [memeInfo]);
 
-  console.log(allData);
   return (
     <Container className="meme-page-container">
       <Row className=" w-100 h-100">
@@ -61,15 +78,31 @@ const FetchMeme = () => {
               />
             </Row>
             <Row>
-              <button className="form--button" onClick={handleClick}>
-                {" "}
-                Insert a new meme
-              </button>
+              <div className="justify-content-center d-flex">
+                <Button color="info" outline onClick={handleClick}>
+                  {" "}
+                  Insert a new meme
+                </Button>
+              </div>
+            </Row>
+            <Row>
+              <div>
+                <Button>Download the meme</Button>
+              </div>
+              <div>
+                <Base64Downloader
+                  onClick={printDocument}
+                  base64={imageSS}
+                  downloadName="meme"
+                >
+                  Click to download
+                </Base64Downloader>
+              </div>
             </Row>
           </div>
         </Col>
-        <Col className="justify-content-center align-item-center d-flex">
-          <div className="meme">
+        <Col className="justify-content-center align-item-center d-flex ">
+          <div className="meme" ref={imageRef}>
             <h2 className="meme--text meme-top">{memeInfo.topText}</h2>
             <img
               src={memeInfo.randomImage}
@@ -85,41 +118,11 @@ const FetchMeme = () => {
   );
 };
 export default FetchMeme;
-{
-  /* <div className="meme-body">
-      <div className="meme-main">
-        <div className="form-memes">
-          <input
-            type="text"
-            placeholder="upper field"
-            className="form--input"
-            name="topText"
-            onChange={handleChange}
-            value={memeInfo.topText}
-          />
-          <input
-            type="text"
-            placeholder="lower field"
-            className="form--input"
-            name="bottomText"
-            onChange={handleChange}
-            value={memeInfo.bottomText}
-          />
-          <button className="form--button" onClick={handleClick}>
-            {" "}
-            Insert a new meme
-          </button>
-        </div>
-        <div className="meme">
-          <h2 className="meme--text meme-top">{memeInfo.topText}</h2>
-          <img
-            src={memeInfo.randomImage}
-            alt="memes to be pulled"
-            className="meme--image"
-          />
-
-          <h2 className="meme--text meme-bottom">{memeInfo.bottomText}</h2>
-        </div>
-      </div>
-    </div> */
-}
+//const table = document.getElementById("table-container");
+// html2canvas(imageRef.current).then(function (canvas) {
+//   const link = document.createElement("a");
+//   link.download = "meme.png";
+//   link.href = canvas.toDataURL("image/png");
+//   link.click();
+// });
+// console.log(imageRef.current, "ref value");
