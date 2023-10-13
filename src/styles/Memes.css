@@ -1,3 +1,25 @@
+.meme-form {
+  border-color: #aa00c4 !important;
+  border-radius: 25px;
+  border-style: solid !important;
+}
+.Download-button {
+  color: #aa00c4;
+  border-color: #aa00c4;
+  line-height: 2.5;
+  transition: color 0.15s ease-in-out, background-color 0.15s, ease-in-out,
+    border-color 0.15s, ease-in-out box-shadow 0.15s, ease-in-out;
+  border: 1px solid;
+  background-color: transparent;
+  font-size: 1em;
+}
+
+.Download-button:hover {
+  color: #000;
+  background-color: #aa00c4;
+  border-color: #aa00c4;
+}
+
 .meme-page-container {
   height: 88vh;
   width: 100vw;
@@ -25,18 +47,14 @@
   font-size: 40px;
   font-weight: 500;
 }
-/* .form-memes {
-  display: grid;
-  grid-template: 40px 40px / 1fr 1fr;
-  gap: 17px;
-} */
+
 .form--button {
   grid-column: 1/-1;
 }
 .form--image {
   align-items: center;
 }
-/* //add css later on */
+
 .form--input {
   font-family: "Karla", sans-serif;
   border-radius: 5px;
