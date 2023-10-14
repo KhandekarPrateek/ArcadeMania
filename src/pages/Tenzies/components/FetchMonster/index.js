@@ -1,6 +1,8 @@
 import MonsterFace from "../MonsterFace";
 import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
+
+import RulesModal from "../../../../common/RulesModal";
 //import Confetti from "react-confetti";
 const FetchMonster = () => {
   const [die, setDie] = useState(NewDie());
@@ -75,15 +77,17 @@ const FetchMonster = () => {
       setDie(NewDie());
     }
   }
+  const rules =
+    "Roll until all dice are the same. Click each die to freeze it at its current value between rolls";
   return (
     <div className="body-monster">
       <div className="main-monster">
-        {/* {tenzies === true && <Confetti className="confetti" />} */}
-        <h1 className="title">TENZIES GAME</h1>
-        <p className="instructions">
+        <h1 className="title-tenzies">TENZIES GAME</h1>
+        {/* <p className="instructions">
           Roll until all dice are the same. Click each die to freeze it at its
           current value between rolls.
-        </p>
+        </p> */}
+        <RulesModal rules={rules} title="Tenzies" />
         <div className="dice-container">{diceElements}</div>
 
         <button className="roll-dice" onClick={handleClick}>

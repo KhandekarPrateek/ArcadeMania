@@ -22,7 +22,7 @@
   align-items: center;
 }
 
-.title {
+.title-tenzies {
   font-size: 40px;
   margin: 0;
 }
@@ -59,7 +59,4 @@
 
 .roll-dice:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
-}
-.confetti {
-  display: flex;
 }

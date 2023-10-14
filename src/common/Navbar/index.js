@@ -20,7 +20,7 @@ const Header = () => {
     <div>
       <Navbar color="light" light expand="md">
         <NavbarBrand className="px-2">
-          <Link to="/">MegaGame</Link>
+          <Link to="/">ArcadeMania</Link>
         </NavbarBrand>
         <NavbarToggler onClick={NavbarToggler} />
         <Collapse isOpen={toggle} navbar>
