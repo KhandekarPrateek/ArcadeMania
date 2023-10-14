@@ -8,11 +8,15 @@ import {
   Nav,
   NavItem,
   UncontrolledDropdown,
+  NavbarToggler,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from "reactstrap";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
-  const NavbarToggler = (oldToggle) => {
+  const navbarToggle = () => {
     setToggle((oldToggle) => !oldToggle);
   };
   return (
@@ -21,7 +25,11 @@ const Header = () => {
         <NavbarBrand className="px-2">
           <Link to="/">ArcadeMania</Link>
         </NavbarBrand>
-        <NavbarToggler onClick={NavbarToggler} />
+        <NavbarToggler
+          onClick={() => {
+            navbarToggle();
+          }}
+        />
         <Collapse isOpen={toggle} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem className="px-2">
