@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "prateeksarcademania",
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
