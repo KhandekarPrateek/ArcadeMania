@@ -2,10 +2,10 @@ import "./App.css";
 import Hangman from "./pages/Hangman";
 import MemesGame from "./pages/MemesGame";
 import Tenzies from "./pages/Tenzies";
-
 import MainPage from "./pages/MainPage";
 import Navbar from "./common/Navbar";
 import { Route, Router, Routes } from "react-router-dom";
+import Footer from "./common/Footer";
 function App() {
   return (
     <>
@@ -17,6 +17,7 @@ function App() {
           <Route path="/MemesGame" element={<MemesGame />} />
         </Route>
       </Routes>
+      <Footer />
     </>
   );
 }

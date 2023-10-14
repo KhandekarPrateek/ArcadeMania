@@ -8,13 +8,12 @@ import {
   Nav,
   NavItem,
   UncontrolledDropdown,
-  NavbarText,
 } from "reactstrap";
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
   const NavbarToggler = (oldToggle) => {
-    setToggle(!oldToggle);
+    setToggle((oldToggle) => !oldToggle);
   };
   return (
     <div>
@@ -35,10 +34,7 @@ const Header = () => {
             <NavItem className="px-2">
               <Link to="Tenzies">Tenzies</Link>
             </NavItem>
-
-            <UncontrolledDropdown nav inNavbar></UncontrolledDropdown>
           </Nav>
-          <NavbarText className="px-2">Simple Text</NavbarText>
         </Collapse>
       </Navbar>
       <Outlet />

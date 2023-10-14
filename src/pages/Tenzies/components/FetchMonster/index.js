@@ -14,7 +14,6 @@ const FetchMonster = () => {
       monsterArray.push(`https://robohash.org/${i}?set=set2`);
     }
     setMonsterArray(monsterArray);
-    console.log(monsterArray);
   };
   useEffect(() => {
     api();
@@ -83,10 +82,7 @@ const FetchMonster = () => {
     <div className="body-monster">
       <div className="main-monster">
         <h1 className="title-tenzies">TENZIES GAME</h1>
-        {/* <p className="instructions">
-          Roll until all dice are the same. Click each die to freeze it at its
-          current value between rolls.
-        </p> */}
+
         <RulesModal rules={rules} title="Tenzies" />
         <div className="dice-container">{diceElements}</div>
 
