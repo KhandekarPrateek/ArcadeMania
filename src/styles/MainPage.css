@@ -3,8 +3,9 @@
   float: left;
   padding: 20px;
 }
+
 .main-page-container {
-  height: 90vh;
+  height: 87vh;
   width: 100vw;
   max-width: 100vw !important;
   background-color: black;

@@ -27,7 +27,7 @@ const Footer = () => {
         </NavbarText>
         <NavbarToggler onClick={Footertoggle} />
         <Collapse isOpen={toggle} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto ms-5" navbar>
             <NavItem>
               <NavLink href="https://www.linkedin.com/in/prateek-khandekar-54966824b/">
                 <AiFillLinkedin size={30} />

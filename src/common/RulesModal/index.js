@@ -3,7 +3,6 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 const RulesModal = (props) => {
   const [modal, setModal] = useState(false);
-
   const toggle = () => setModal(!modal);
 
   return (
