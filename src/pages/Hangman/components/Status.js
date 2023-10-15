@@ -36,7 +36,6 @@ const Status = ({
     setLose(false);
     setPlay(true);
   };
-  console.log(currentWord);
 
   return (
     <div>
