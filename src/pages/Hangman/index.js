@@ -41,7 +41,7 @@ const Hangman = () => {
       });
     });
   };
-  // console.log(extractedDefinition);
+
   const handleKeyChange = (key, e) => {
     if (currentWord.includes(key)) {
       if (!correctLetter.includes(key)) {
@@ -82,7 +82,7 @@ const Hangman = () => {
   const hangmanRules =
     "Guess letters to uncover a secret word. Incorrect guesses result in drawing parts of a hangman. Fill in the word before the hangman is complete to win.";
   return (
-    <Container className="hangman-body" fluid>
+    <Container className="hangman-body " fluid>
       <Row>
         {" "}
         <div className="display-2 d-flex justify-content-center ">HANGMAN</div>
@@ -100,27 +100,30 @@ const Hangman = () => {
         <Col
           xs={12}
           sm={6}
-          className=" h-75 align-self-center align-items-center d-flex flex-column justify-content-center"
+          className=" h-75 align-self-start align-items-center d-flex flex-column justify-content-center "
         >
-          <Row>
-            <Figure wrong={wrongLetter} />
-          </Row>
-          <Row>
-            <Word selectedWord={currentWord} correctLetter={correctLetter} />
-          </Row>
-          <Hints define={extractedDefinition} />
-          {wrongLetter.length < 7 && (
-            <KeyboardEventHandler
-              handleKeys={["alphabetic"]}
-              onKeyEvent={(key, e) => handleKeyChange(key, e)}
-            ></KeyboardEventHandler>
-          )}
+          <div className="hangman-glass p-5 ">
+            <Row>
+              <Figure wrong={wrongLetter} />
+            </Row>
+            <Row>
+              <Word selectedWord={currentWord} correctLetter={correctLetter} />
+            </Row>
 
-          {showNotification === true && <>same</>}
+            {wrongLetter.length < 7 && (
+              <KeyboardEventHandler
+                handleKeys={["alphabetic"]}
+                onKeyEvent={(key, e) => handleKeyChange(key, e)}
+              ></KeyboardEventHandler>
+            )}
 
-          {play === false && <>YOU WON</>}
+            {showNotification === true && <>same</>}
 
-          {lose === true && <h1>YOU LOSE</h1>}
+            {play === false && <>YOU WON</>}
+
+            {lose === true && <h1>YOU LOSE</h1>}
+          </div>
+          <Hints define={extractedDefinition} word={currentWord} />
         </Col>
         <Col
           sm={3}
