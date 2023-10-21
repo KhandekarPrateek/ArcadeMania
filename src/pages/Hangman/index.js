@@ -83,17 +83,25 @@ const Hangman = () => {
     "Guess letters to uncover a secret word. Incorrect guesses result in drawing parts of a hangman. Fill in the word before the hangman is complete to win.";
   return (
     <Container className="hangman-body" fluid>
-      <Row className="h-100 ">
-        <Col sm={3} className=" h-50 align-self-center d-flex flex-column">
+      <Row>
+        {" "}
+        <div className="display-2 d-flex justify-content-center ">HANGMAN</div>
+      </Row>
+      <Row className="h-100">
+        <Col
+          sm={3}
+          xs={12}
+          className="align-items-center h-50 align-self-center d-flex flex-column"
+        >
           <h1 className="pb-5 ">Rules</h1>
 
           <p className="h2 pt-5 ">{hangmanRules}</p>
         </Col>
         <Col
+          xs={12}
           sm={6}
           className=" h-75 align-self-center align-items-center d-flex flex-column justify-content-center"
         >
-          <Row className="display-2 d-flex align-items-start ">HANGMAN</Row>
           <Row>
             <Figure wrong={wrongLetter} />
           </Row>
@@ -116,14 +124,20 @@ const Hangman = () => {
         </Col>
         <Col
           sm={3}
-          className=" justify-content-center align-items-center align-self-center d-flex flex-column h-50"
+          xs={12}
+          className=" justify-content-center align-items-center  align-self-center d-flex flex-column h-50"
         >
-          <WrongLetters wrong={wrongLetter} className="mb-5" />
-          {(play === false || lose === true) && (
-            <Button className="mt-5" outline onClick={playAgain}>
-              Start another game
-            </Button>
-          )}
+          <Row className="pb-5">
+            {" "}
+            <WrongLetters wrong={wrongLetter} />
+          </Row>
+          <Row className="pt-5">
+            {(play === false || lose === true) && (
+              <Button outline onClick={playAgain}>
+                Start another game
+              </Button>
+            )}
+          </Row>
         </Col>
       </Row>
     </Container>
