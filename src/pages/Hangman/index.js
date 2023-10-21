@@ -6,11 +6,14 @@ import Word from "./components/Word";
 import WrongLetters from "./components/WrongLetters";
 
 import wordsArray from "./components/dataHangman";
+import { Col, Container, Row, Button } from "reactstrap";
+import Hints from "./components/Hints";
 
 const Hangman = () => {
   const randomWord =
     wordsArray[Math.floor(Math.random() * wordsArray.length)].toLowerCase();
   const [currentWord, setCurrentWord] = useState(randomWord);
+  const [extractedDefinition, setExtractedDefinition] = useState([]);
   const [correctLetter, setCorrectLetter] = useState([]);
   const [wrongLetter, setWrongLetter] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
@@ -28,14 +31,17 @@ const Hangman = () => {
       .then((res) => res.json())
       .then((data) => displayFunc(data));
   }, [currentWord]);
+  const extractedDefs = [];
   const displayFunc = (jsonData) => {
     jsonData[0].meanings.forEach((meaning) => {
       meaning.definitions.forEach((definition) => {
-        console.log("Definition: ", definition.definition, currentWord);
+        extractedDefs.push(definition.definition);
+
+        setExtractedDefinition(extractedDefs);
       });
     });
   };
-
+  // console.log(extractedDefinition);
   const handleKeyChange = (key, e) => {
     if (currentWord.includes(key)) {
       if (!correctLetter.includes(key)) {
@@ -73,30 +79,54 @@ const Hangman = () => {
   };
   useEffect(checkLosser);
   useEffect(checkWinner);
-
+  const hangmanRules =
+    "Guess letters to uncover a secret word. Incorrect guesses result in drawing parts of a hangman. Fill in the word before the hangman is complete to win.";
   return (
-    <div className="hangman-body">
-      <Figure wrong={wrongLetter} />
-      <Word selectedWord={currentWord} correctLetter={correctLetter} />
+    <Container className="hangman-body" fluid>
+      <Row className="h-100 ">
+        <Col sm={3} className=" h-50 align-self-center d-flex flex-column">
+          <h1 className="pb-5 ">Rules</h1>
 
-      {wrongLetter.length < 7 && (
-        <KeyboardEventHandler
-          handleKeys={["alphabetic"]}
-          onKeyEvent={(key, e) => handleKeyChange(key, e)}
-        ></KeyboardEventHandler>
-      )}
+          <p className="h2 pt-5 ">{hangmanRules}</p>
+        </Col>
+        <Col
+          sm={6}
+          className=" h-75 align-self-center align-items-center d-flex flex-column justify-content-center"
+        >
+          <Row className="display-2 d-flex align-items-start ">HANGMAN</Row>
+          <Row>
+            <Figure wrong={wrongLetter} />
+          </Row>
+          <Row>
+            <Word selectedWord={currentWord} correctLetter={correctLetter} />
+          </Row>
+          <Hints define={extractedDefinition} />
+          {wrongLetter.length < 7 && (
+            <KeyboardEventHandler
+              handleKeys={["alphabetic"]}
+              onKeyEvent={(key, e) => handleKeyChange(key, e)}
+            ></KeyboardEventHandler>
+          )}
 
-      <WrongLetters wrong={wrongLetter} />
-      {showNotification === true && <div>same</div>}
+          {showNotification === true && <>same</>}
 
-      <div>
-        {play === false && <h1>YOU WON</h1>}
-        {(play === false || lose === true) && (
-          <button onClick={playAgain}>Start another game</button>
-        )}
-        {lose === true && <h1>YOU LOSE</h1>}
-      </div>
-    </div>
+          {play === false && <>YOU WON</>}
+
+          {lose === true && <h1>YOU LOSE</h1>}
+        </Col>
+        <Col
+          sm={3}
+          className=" justify-content-center align-items-center align-self-center d-flex flex-column h-50"
+        >
+          <WrongLetters wrong={wrongLetter} className="mb-5" />
+          {(play === false || lose === true) && (
+            <Button className="mt-5" outline onClick={playAgain}>
+              Start another game
+            </Button>
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 export default Hangman;
