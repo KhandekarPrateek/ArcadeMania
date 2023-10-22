@@ -36,7 +36,6 @@ const Hangman = () => {
     jsonData[0].meanings.forEach((meaning) => {
       meaning.definitions.forEach((definition) => {
         extractedDefs.push(definition.definition);
-
         setExtractedDefinition(extractedDefs);
       });
     });

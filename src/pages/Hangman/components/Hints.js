@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-const Hints = (props) => {
+const Hints = ({ define, word }) => {
   const [index, setIndex] = useState(0);
-  const def = props.define;
-  const answer = props.word;
 
   useEffect(() => {
     const generator = setTimeout(() => {
-      setIndex((index) => (index + 1) % def.length);
-    }, 2000);
+      index < define.length - 1 ? setIndex((index) => index + 1) : setIndex(0);
+    }, 5000);
     return () => clearInterval(generator);
-  }, [def.length]);
-  const currentHint = def[index];
+  });
+  const currentHint = define[index];
   return (
     <div>
       <h1>hints</h1>
