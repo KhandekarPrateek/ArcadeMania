@@ -8,6 +8,7 @@ import WrongLetters from "./components/WrongLetters";
 import wordsArray from "./components/dataHangman";
 import { Col, Container, Row, Button } from "reactstrap";
 import Hints from "./components/Hints";
+import RulesModal from "../../common/RulesModal";
 
 const Hangman = () => {
   const randomWord =
@@ -84,7 +85,9 @@ const Hangman = () => {
     <Container className="hangman-body " fluid>
       <Row>
         {" "}
-        <div className="display-2 d-flex justify-content-center ">HANGMAN</div>
+        <div className="display-2 d-flex justify-content-center hangman--font ">
+          HANGMAN
+        </div>
       </Row>
       <Row className="h-100">
         <Col
@@ -92,9 +95,12 @@ const Hangman = () => {
           xs={12}
           className="align-items-center h-50 align-self-center d-flex flex-column"
         >
-          <h1 className="pb-5 ">Rules</h1>
-
-          <p className="h2 pt-5 ">{hangmanRules}</p>
+          <Hints
+            define={extractedDefinition}
+            word={currentWord}
+            lose={lose}
+            play={play}
+          />
         </Col>
         <Col
           xs={12}
@@ -122,23 +128,23 @@ const Hangman = () => {
 
             {lose === true && <h1>YOU LOSE</h1>}
           </div>
-          <Hints define={extractedDefinition} word={currentWord} />
         </Col>
         <Col
           sm={3}
           xs={12}
-          className=" justify-content-center align-items-center  align-self-center d-flex flex-column h-50"
+          className=" justify-content-center  align-self-center d-flex flex-column h-50"
         >
           <Row className="pb-5">
             {" "}
             <WrongLetters wrong={wrongLetter} />
           </Row>
           <Row className="pt-5">
-            {(play === false || lose === true) && (
-              <Button outline onClick={playAgain}>
-                Start another game
-              </Button>
-            )}
+            <Button outline onClick={playAgain}>
+              Start another game
+            </Button>
+          </Row>
+          <Row>
+            <RulesModal className="pt-5" title="Rules" rules={hangmanRules} />
           </Row>
         </Col>
       </Row>
