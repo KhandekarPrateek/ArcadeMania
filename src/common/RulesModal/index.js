@@ -6,8 +6,8 @@ const RulesModal = (props) => {
   const toggle = () => setModal(!modal);
 
   return (
-    <div className="justify-content-center d-flex">
-      <Button color="primary" outline onClick={toggle}>
+    <div className="justify-content-center d-flex flex-column">
+      <Button color="primary " onClick={toggle}>
         Rules
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
