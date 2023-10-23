@@ -3,7 +3,8 @@ import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
 
 import RulesModal from "../../../../common/RulesModal";
-//import Confetti from "react-confetti";
+import { Button, Col, Container, Row } from "reactstrap";
+import Confetti from "react-confetti";
 const FetchMonster = () => {
   const [die, setDie] = useState(NewDie());
   const [tenzies, setTenzies] = useState(false);
@@ -40,7 +41,7 @@ const FetchMonster = () => {
 
   function NewDie() {
     const dice = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 12; i++) {
       dice.push(generateNewDie());
     }
     return dice;
@@ -53,16 +54,6 @@ const FetchMonster = () => {
       })
     );
   }
-
-  const diceElements = die.map((EveryDie) => (
-    <MonsterFace
-      key={EveryDie.id}
-      value={EveryDie.value}
-      status={EveryDie.isHeld}
-      function={() => hold(EveryDie.id)}
-      link={monsterArray[EveryDie.value]}
-    />
-  ));
 
   function handleClick() {
     if (tenzies === false) {
@@ -77,20 +68,37 @@ const FetchMonster = () => {
     }
   }
   const rules =
-    "Roll until all dice are the same. Click each die to freeze it at its current value between rolls";
+    "Roll until all Monster faces are the same. Click each face to freeze it at its current value between rolls";
   return (
-    <div className="body-monster">
-      <div className="main-monster">
-        <h1 className="title-tenzies">TENZIES GAME</h1>
+    <Container className="body-monster " fluid>
+      {tenzies && <Confetti />}
+      <Container className="main-monster" fluid>
+        <Row>
+          <h1 className="title-tenzies pb-2 ">TENZIES GAME</h1>
+        </Row>
+        <Row className="pb-4">
+          <RulesModal rules={rules} title="Tenzies" />
+        </Row>
+        <Row className="w-100 mb-5" sm={12}>
+          {die.map((EveryDie) => (
+            <Col key={EveryDie.id} className="dice-container" sm={2}>
+              <MonsterFace
+                value={EveryDie.value}
+                status={EveryDie.isHeld}
+                function={() => hold(EveryDie.id)}
+                link={monsterArray[EveryDie.value]}
+              />
+            </Col>
+          ))}
+        </Row>
 
-        <RulesModal rules={rules} title="Tenzies" />
-        <div className="dice-container">{diceElements}</div>
-
-        <button className="roll-dice" onClick={handleClick}>
-          {tenzies === true ? "New game" : "Roll"}
-        </button>
-      </div>
-    </div>
+        <Row>
+          <Button className="roll-dice " onClick={handleClick}>
+            {tenzies === true ? "New game" : "Roll"}
+          </Button>
+        </Row>
+      </Container>
+    </Container>
   );
 };
 
