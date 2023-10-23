@@ -6,9 +6,10 @@ const Hints = ({ define, word, lose, play }) => {
   useEffect(() => {
     const generator = setTimeout(() => {
       index < define.length - 1 ? setIndex((index) => index + 1) : setIndex(0);
-    }, 1000);
+    }, 5000);
     return () => clearInterval(generator);
-  });
+  }, [index, define]);
+
   const currentHint = define[index];
   return (
     <div>
@@ -24,8 +25,6 @@ const Hints = ({ define, word, lose, play }) => {
           </div>
         )
       ) : null}
-
-      {console.log(currentHint, "curent hint", word, "word")}
     </div>
   );
 };

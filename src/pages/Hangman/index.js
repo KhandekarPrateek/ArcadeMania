@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useState } from "react";
 import KeyboardEventHandler from "react-keyboard-event-handler";
 import Figure from "./components/Figure";
@@ -11,13 +11,37 @@ import Hints from "./components/Hints";
 import RulesModal from "../../common/RulesModal";
 
 const Hangman = () => {
+  const extractedDefs = [];
   const randomWord =
     wordsArray[Math.floor(Math.random() * wordsArray.length)].toLowerCase();
+  const hangmanRules =
+    "Guess letters to uncover a secret word. Incorrect guesses result in drawing parts of a hangman. Fill in the word before the hangman is complete to win.";
+
   const [currentWord, setCurrentWord] = useState(randomWord);
   const [extractedDefinition, setExtractedDefinition] = useState([]);
   const [correctLetter, setCorrectLetter] = useState([]);
   const [wrongLetter, setWrongLetter] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
+  const [play, setPlay] = useState(true);
+  const [lose, setLose] = useState(false);
+
+  const wordLength = currentWord.split("");
+  const wordLength1 = Array.from(new Set(wordLength));
+
+  useEffect(() => {
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${currentWord}`)
+      .then((res) => res.json())
+      .then((data) => pushDefinition(data));
+  }, [currentWord]);
+
+  useEffect(() => {
+    checkLosser();
+    checkWinner();
+  });
+
+  setTimeout(() => {
+    setShowNotification(false);
+  }, 1000);
 
   const playAgain = () => {
     setCurrentWord(randomWord);
@@ -27,13 +51,7 @@ const Hangman = () => {
     setPlay(true);
   };
 
-  useEffect(() => {
-    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${currentWord}`)
-      .then((res) => res.json())
-      .then((data) => displayFunc(data));
-  }, [currentWord]);
-  const extractedDefs = [];
-  const displayFunc = (jsonData) => {
+  const pushDefinition = (jsonData) => {
     jsonData[0].meanings.forEach((meaning) => {
       meaning.definitions.forEach((definition) => {
         extractedDefs.push(definition.definition);
@@ -58,13 +76,6 @@ const Hangman = () => {
     }
   };
 
-  setTimeout(() => {
-    setShowNotification(false);
-  }, 1000);
-  const [play, setPlay] = useState(true);
-  const [lose, setLose] = useState(false);
-  const wordLength = currentWord.split("");
-  const wordLength1 = Array.from(new Set(wordLength));
   const checkWinner = () => {
     if (correctLetter.length === wordLength1.length) {
       wordLength1.forEach((element) => {
@@ -74,17 +85,14 @@ const Hangman = () => {
       });
     }
   };
+
   const checkLosser = () => {
     wrongLetter.length === 6 && setLose(true);
   };
-  useEffect(checkLosser);
-  useEffect(checkWinner);
-  const hangmanRules =
-    "Guess letters to uncover a secret word. Incorrect guesses result in drawing parts of a hangman. Fill in the word before the hangman is complete to win.";
+
   return (
-    <Container className="hangman-body " fluid>
+    <Container className="hangman-body" fluid>
       <Row>
-        {" "}
         <div className="display-2 d-flex justify-content-center hangman--font ">
           HANGMAN
         </div>
@@ -95,12 +103,14 @@ const Hangman = () => {
           xs={12}
           className="align-items-center h-50 align-self-center d-flex flex-column"
         >
-          <Hints
-            define={extractedDefinition}
-            word={currentWord}
-            lose={lose}
-            play={play}
-          />
+          {play && !lose && (
+            <Hints
+              define={extractedDefinition}
+              word={currentWord}
+              lose={lose}
+              play={play}
+            />
+          )}
         </Col>
         <Col
           xs={12}
@@ -121,27 +131,24 @@ const Hangman = () => {
                 onKeyEvent={(key, e) => handleKeyChange(key, e)}
               ></KeyboardEventHandler>
             )}
-
-            {showNotification === true && <>same</>}
-
-            {play === false && <>YOU WON</>}
-
-            {lose === true && <h1>YOU LOSE</h1>}
           </div>
+          {showNotification === true && <>same</>}
+
+          {play === false && <>YOU WON</>}
+
+          {lose === true && <h1>YOU LOSE</h1>}
         </Col>
         <Col
           sm={3}
           xs={12}
-          className=" justify-content-center  align-self-center d-flex flex-column h-50"
+          className=" justify-content-center  align-self-center d-flex flex-column h-100"
         >
-          <Row className="pb-5">
-            {" "}
+          <Row>
             <WrongLetters wrong={wrongLetter} />
           </Row>
-          <Row className="pt-5">
-            <Button outline onClick={playAgain}>
-              Start another game
-            </Button>
+
+          <Row className="pb-5">
+            <Button onClick={playAgain}>Start game</Button>
           </Row>
           <Row>
             <RulesModal className="pt-5" title="Rules" rules={hangmanRules} />
