@@ -67,6 +67,7 @@ const FetchMonster = () => {
       setDie(NewDie());
     }
   }
+
   const rules =
     "Roll until all Monster faces are the same. Click each face to freeze it at its current value between rolls";
   return (
@@ -76,7 +77,7 @@ const FetchMonster = () => {
         <Row>
           <h1 className="title-tenzies pb-2 ">TENZIES GAME</h1>
         </Row>
-        <Row className="pb-4">
+        <Row className="pb-4 justify-content-center d-flex flex-column">
           <RulesModal rules={rules} title="Tenzies" />
         </Row>
         <Row className="w-100 mb-5" sm={12}>
