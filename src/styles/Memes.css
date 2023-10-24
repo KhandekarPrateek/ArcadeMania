@@ -1,6 +1,6 @@
 .meme-form {
   border-color: #aa00c4 !important;
-  border-radius: 25px;
+  border-radius: 2em;
   border-style: solid !important;
 }
 .Download-button {
@@ -24,6 +24,7 @@
   height: 80vh;
   width: 100vw;
   max-width: 100vw !important;
+  height: 100% !important;
 }
 .header-memes {
   display: flex;
@@ -43,21 +44,8 @@
   margin-right: auto;
 }
 
-.header--project {
-  font-size: 40px;
-  font-weight: 500;
-}
-
-.form--button {
-  grid-column: 1/-1;
-}
-.form--image {
-  align-items: center;
-}
-
 .form--input {
   font-family: "Karla", sans-serif;
-  border-radius: 5px;
   border: 1px solid #d5d4d8;
   text-indent: 5px;
 }
@@ -89,10 +77,20 @@
     2px 2px 5px #000;
 }
 
-.meme-bottom {
-  bottom: 0;
-}
-
-.meme-top {
-  top: 0;
+.meme--text-down {
+  position: absolute;
+  width: 80%;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: -50px 0;
+  padding: 0 5px;
+  font-family: impact, sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
+    2px 2px 5px #000;
 }

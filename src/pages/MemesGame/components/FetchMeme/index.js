@@ -52,61 +52,67 @@ const FetchMeme = () => {
   return (
     <Container className="meme-page-container">
       <Row className=" w-100 h-100">
-        <div className="p-5  h-100 w-50  align-items-center d-flex">
-          <Col className="justify-content-center d-flex">
-            <div className="w-75 h-100 border border-5   meme-form">
-              <Row>
-                <div className="p-5">
-                  <Input
-                    type="text"
-                    placeholder="upper field"
-                    className="form--input"
-                    name="topText"
-                    onChange={handleChange}
-                    value={memeInfo.topText}
-                  />
-                </div>{" "}
-              </Row>
-              <Row>
-                <div className="p-5">
-                  <Input
-                    type="text"
-                    placeholder="lower field"
-                    className="form--input"
-                    name="bottomText"
-                    onChange={handleChange}
-                    value={memeInfo.bottomText}
-                  />
-                </div>
-              </Row>
-              <Row>
-                <div className="justify-content-center d-flex p-5">
-                  <Button className="Download-button" onClick={handleClick}>
-                    {" "}
-                    Insert a new meme
-                  </Button>
-                </div>
-              </Row>
-              <Row>
-                <div className="justify-content-center d-flex p-5">
-                  <Base64Downloader
-                    onClick={printDocument}
-                    base64={imageSS}
-                    downloadName="meme"
-                    className="Download-button"
-                  >
-                    {/* <Button className="Download-button" outline> */}
-                    Download the meme
-                    {/* </Button> */}
-                  </Base64Downloader>
-                </div>
-              </Row>
-            </div>
-          </Col>
-        </div>
-        <div className="h-100 w-50 justify-content-center align-items-center d-flex  ">
-          <Col>
-            <div className="meme" ref={imageRef}>
+        <Col
+          className="justify-content-center d-flex p-5 h-100 align-items-center "
+          sm={6}
+          xs={12}
+        >
+          <div className="w-75 h-100 border border-5   meme-form">
+            <Row>
+              <div className="p-5">
+                <h6>Top Text</h6>
+                <Input
+                  type="text"
+                  placeholder="upper field"
+                  className="form--input"
+                  name="topText"
+                  onChange={handleChange}
+                  value={memeInfo.topText}
+                />
+              </div>
+            </Row>
+            <Row>
+              <div className="p-5">
+                <h6>Bottom Text</h6>
+                <Input
+                  type="text"
+                  placeholder="lower field"
+                  className="form--input"
+                  name="bottomText"
+                  onChange={handleChange}
+                  value={memeInfo.bottomText}
+                />
+              </div>
+            </Row>
+            <Row>
+              <div className="justify-content-center d-flex p-5">
+                <Button className="Download-button" onClick={handleClick}>
+                  Insert a new meme
+                </Button>
+              </div>
+            </Row>
+            <Row>
+              <div className="justify-content-center d-flex p-5">
+                <Base64Downloader
+                  onClick={printDocument}
+                  base64={imageSS}
+                  downloadName="meme"
+                  className="Download-button"
+                >
+                  Download the meme
+                </Base64Downloader>
+              </div>
+            </Row>
+          </div>
+        </Col>
+
+        <Col
+          className="justify-content-center align-items-center d-flex  "
+          sm={6}
+          xs={12}
+        >
+          <div className="meme">
+            <div ref={imageRef}>
               <h2 className="meme--text meme-top">{memeInfo.topText}</h2>
               <img
                 src={memeInfo.randomImage}
@@ -114,10 +120,12 @@ const FetchMeme = () => {
                 className="meme--image"
               />
 
-              <h2 className="meme--text meme-bottom">{memeInfo.bottomText}</h2>
+              <h2 className="meme--text-down meme-bottom  ">
+                {memeInfo.bottomText}
+              </h2>
             </div>
-          </Col>
-        </div>
+          </div>
+        </Col>
       </Row>
     </Container>
   );

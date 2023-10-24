@@ -19,29 +19,28 @@ const Footer = () => {
   };
 
   return (
-    <div className="justify-content-center d-flex">
-      <Navbar color="light" light expand="md">
-        <NavbarText className="px-3">
-          Made with <AiFillHeart size={30} style={{ fill: "red" }} /> by Prateek
-          Khandekar
-        </NavbarText>
-        <NavbarToggler onClick={Footertoggle} />
-        <Collapse isOpen={toggle} navbar>
-          <Nav className="ml-auto ms-5" navbar>
-            <NavItem>
-              <NavLink href="https://www.linkedin.com/in/prateek-khandekar-54966824b/">
-                <AiFillLinkedin size={30} />
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/KhandekarPrateek">
-                <SiGithub size={30} />
-              </NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
-    </div>
+    <Navbar light expand="md" className="bg-light w-100 ps-5" fixed="bottom">
+      <NavbarToggler onClick={Footertoggle} />
+      <Collapse isOpen={toggle} navbar>
+        <Nav className="ms-1" navbar>
+          <NavItem className="pt-2">
+            Made with <AiFillHeart size={30} className="text-danger" /> by
+            Prateek Khandekar
+          </NavItem>
+
+          <NavItem>
+            <NavLink href="https://www.linkedin.com/in/prateek-khandekar-54966824b/">
+              <AiFillLinkedin size={30} />
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="https://github.com/KhandekarPrateek">
+              <SiGithub size={30} />
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </Collapse>
+    </Navbar>
   );
 };
 export default Footer;

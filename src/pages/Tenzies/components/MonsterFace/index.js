@@ -6,8 +6,8 @@ const MonsterFace = (props) => {
   };
 
   return (
-    <div className="die-face" style={styles} onClick={props.function}>
-      <img src={`${props.link}`} alt={`${props.value}`} />
+    <div className="die-face card" style={styles} onClick={props.function}>
+      <img className="card-img" src={`${props.link}`} alt={`${props.value}`} />
     </div>
   );
 };

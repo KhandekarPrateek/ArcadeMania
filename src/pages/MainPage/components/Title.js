@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 const Title = (props) => {
   const redirectButton = () => {
-    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    window.location.href = "https://react.dev/learn";
   };
   return (
     <Container>
@@ -26,7 +26,7 @@ const Title = (props) => {
             color="primary"
             onClick={redirectButton}
           >
-            <h1 className="display 5 main-page-title">play video</h1>
+            <h1 className="display 5 main-page-title">Learn React</h1>
           </Button>
         </Col>
       </Row>
