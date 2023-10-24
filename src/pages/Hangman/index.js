@@ -91,31 +91,29 @@ const Hangman = () => {
   };
 
   return (
-    <Container className="hangman-body" fluid>
+    <Container className="hangman-body " fluid>
       <Row>
         <div className="display-2 d-flex justify-content-center hangman--font ">
           HANGMAN
         </div>
       </Row>
-      <Row className="h-100">
+      <Row className="d-flex align-items-center h-100">
         <Col
           sm={3}
           xs={12}
-          className="align-items-center h-50 align-self-center d-flex flex-column"
+          className="ps-5 justify-content-center align-items-center h-100 align-self-center d-flex flex-column"
         >
-          {play && !lose && (
-            <Hints
-              define={extractedDefinition}
-              word={currentWord}
-              lose={lose}
-              play={play}
-            />
-          )}
+          <Hints
+            define={extractedDefinition}
+            word={currentWord}
+            lose={lose}
+            play={play}
+          />
         </Col>
         <Col
           xs={12}
           sm={6}
-          className=" h-75 align-self-start align-items-center d-flex flex-column justify-content-center "
+          className=" h-100 align-self-start align-items-center d-flex flex-column justify-content-center "
         >
           <div className="hangman-glass p-5 ">
             <Row>
@@ -147,11 +145,11 @@ const Hangman = () => {
             <WrongLetters wrong={wrongLetter} />
           </Row>
 
-          <Row className="pb-5">
+          <Row className="mb-5 me-5">
             <Button onClick={playAgain}>Start game</Button>
           </Row>
-          <Row>
-            <RulesModal className="pt-5" title="Rules" rules={hangmanRules} />
+          <Row className="mt-5 me-5">
+            <RulesModal color="secondary" title="Rules" rules={hangmanRules} />
           </Row>
         </Col>
       </Row>

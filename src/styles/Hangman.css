@@ -3,8 +3,10 @@
   font-family: Arial, Helvetica, sans-serif;
   height: 87vh;
   margin: 0;
-  overflow: hidden;
-  background-image: url("../assets/background-Hangman.jpg");
+  /* overflow: hidden; */
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)),
+    url("../assets/background-Hangman.jpg");
+
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -21,14 +23,13 @@
 }
 
 .wrong-letters-container {
-  top: 20px;
-  right: 20px;
   display: flex;
   flex-direction: column;
+  height: fit-content;
 }
-
-.wrong-letters-container p {
-  margin: 0 0 5px;
+.wrong-letters-container-hidden {
+  visibility: hidden;
+  height: 7em;
 }
 
 .wrong-letters-container span {
@@ -59,4 +60,7 @@
 }
 .hangman--font {
   font-family: "Creepster";
+}
+.hangman-font-height {
+  height: 120px;
 }
