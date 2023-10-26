@@ -17,21 +17,6 @@ const FetchMeme = () => {
   const [allData, setAllData] = useState({});
   const imageRef = useRef(null);
 
-  function handleClick() {
-    const randomNumber = Math.floor(Math.random() * allData.length);
-    const randomMeme = allData[randomNumber].url;
-    setMemeInfo((prevmemeInfo) => ({
-      ...prevmemeInfo,
-      randomImage: randomMeme,
-    }));
-  }
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setMemeInfo((prevMeme) => ({
-      ...prevMeme,
-      [name]: value,
-    }));
-  }
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((res) => res.json())
@@ -48,7 +33,21 @@ const FetchMeme = () => {
   useEffect(() => {
     printDocument();
   }, [memeInfo]);
-
+  function handleClick() {
+    const randomNumber = Math.floor(Math.random() * allData.length);
+    const randomMeme = allData[randomNumber].url;
+    setMemeInfo((prevmemeInfo) => ({
+      ...prevmemeInfo,
+      randomImage: randomMeme,
+    }));
+  }
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setMemeInfo((prevMeme) => ({
+      ...prevMeme,
+      [name]: value,
+    }));
+  }
   return (
     <Container className="meme-page-container">
       <Row className=" w-100 h-100">
